@@ -102,7 +102,9 @@ export default function Header({ currentPage, navigate }) {
             <img
               src="/company-logo/CodeLTD(Mobile-View).png"
               alt="CODE LTD"
-              className={`lg:hidden h-[80px] w-auto object-contain transition-opacity duration-300`}
+              className={`lg:hidden h-[40px] w-auto object-contain transition-all duration-300 ${
+                scrolled ? "" : "brightness-0 invert"
+              }`}
             />
           </button>
 
