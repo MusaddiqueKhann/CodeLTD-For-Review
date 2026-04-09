@@ -152,7 +152,7 @@ export function Tag({ children, light = false }) {
 
 export function LogoMark({ variant = "white" }) {
   const { isAr } = useLang();
-  const logoSrc = isAr ? "/company-logo/CodeLTD-AR.svg" : "/company-logo/CodeLTD-ENG.svg";
+  const logoSrc = isAr ? "/company-logo/CodeLTD-AR.svg" : "/company-logo/CodeLTD(Mobile-Views).png";
 
   return (
     <img
