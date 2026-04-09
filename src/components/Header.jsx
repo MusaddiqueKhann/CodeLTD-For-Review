@@ -102,7 +102,7 @@ export default function Header({ currentPage, navigate }) {
           <img
             src="/company-logo/CodeLTD(Mobile-Views).png"
             alt="CODE LTD"
-            className={`lg:hidden h-[42px] w-auto max-w-[180px] object-contain transition-all duration-300 ${
+            className={`lg:hidden h-[40px] w-auto max-w-[180px] object-contain transition-all duration-300 ${
               scrolled ? "" : "brightness-0 invert"
             }`}
           />
