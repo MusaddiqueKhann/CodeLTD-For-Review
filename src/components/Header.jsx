@@ -100,7 +100,7 @@ export default function Header({ currentPage, navigate }) {
             
             {/* Mobile PNG Logo - Shows only on mobile in original orange color */}
             <img
-              src="/company-logo/CodeLTD-Mobile.png"
+              src="/company-logo/CodeLTD(Mobile-View).png"
               alt="CODE LTD"
               className={`lg:hidden h-[36px] w-auto object-contain transition-opacity duration-300`}
             />
