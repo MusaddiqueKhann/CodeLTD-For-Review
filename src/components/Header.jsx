@@ -89,12 +89,20 @@ export default function Header({ currentPage, navigate }) {
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <button onClick={() => go("home")} className="mt-2 relative z-10">
+            {/* Desktop SVG Logo */}
             <img
               src={isAr ? "/company-logo/CodeLTD-AR.svg" : "/company-logo/CodeLTD-ENG.svg"}
               alt="CODE LTD"
-              className={`h-[40px] w-auto object-contain transition-all duration-300 will-change-transform transform-gpu ${
+              className={`hidden lg:block h-[40px] w-auto object-contain transition-all duration-300 will-change-transform transform-gpu ${
                 scrolled ? "" : "brightness-0 invert"
               }`}
+            />
+            
+            {/* Mobile PNG Logo - Shows only on mobile in original orange color */}
+            <img
+              src="/company-logo/CodeLTD-Mobile.png"
+              alt="CODE LTD"
+              className={`lg:hidden h-[36px] w-auto object-contain transition-opacity duration-300`}
             />
           </button>
 
