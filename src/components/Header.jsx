@@ -91,21 +91,21 @@ export default function Header({ currentPage, navigate }) {
           <button onClick={() => go("home")} className="mt-2 relative z-10">
             {/* Desktop SVG Logo */}
             <img
-              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views).png" : "/company-logo/CodeLTD(Mobile-Views).png"}
+              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views)" : "/company-logo/CodeLTD(Mobile-Views).png"}
               alt="CODE LTD"
               className={`hidden lg:block h-[40px] w-auto object-contain transition-all duration-300 will-change-transform transform-gpu ${
                 scrolled ? "" : "brightness-0 invert"
               }`}
             />
             
-            {/* Mobile PNG Logo - Now toggles between AR and EN */}
-          <img
-            src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views).png" : "/company-logo/CodeLTD(Mobile-Views).png"}
-            alt="CODE LTD"
-            className={`lg:hidden h-[40px] w-auto max-w-[180px] object-contain transition-all duration-300 ${
-              scrolled ? "" : "brightness-0 invert"
-            }`}
-          />
+            {/* Mobile PNG Logo */}
+            <img
+              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views)" : "/company-logo/CodeLTD(Mobile-Views).png"}
+              alt="CODE LTD"
+              className={`lg:hidden h-[40px] w-auto max-w-[180px] object-contain transition-all duration-300 ${
+                scrolled ? "" : "brightness-0 invert"
+              }`}
+            />
           </button>
 
           <nav className="hidden lg:flex items-center gap-9">
@@ -146,15 +146,16 @@ export default function Header({ currentPage, navigate }) {
               />
             </div>
 
+            {/* INCREASED HAMBURGER ICON SIZE */}
             <button
-              className="lg:hidden flex flex-col gap-[5px] p-1.5 z-[60] relative ml-1"
+              className="lg:hidden flex flex-col gap-[7px] p-2 z-[60] relative ml-1"
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
             >
-              <span className={`block w-6 h-0.5 rounded transition-all duration-300 ${menuOpen ? "bg-white rotate-45 translate-y-[7px]" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
-              <span className={`block w-6 h-0.5 rounded transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0 bg-white" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
-              <span className={`block w-6 h-0.5 rounded transition-all duration-300 ${menuOpen ? "bg-white -rotate-45 -translate-y-[7px]" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
+              <span className={`block w-8 h-[3px] rounded transition-all duration-300 ${menuOpen ? "bg-white rotate-45 translate-y-[10px]" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
+              <span className={`block w-8 h-[3px] rounded transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0 bg-white" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
+              <span className={`block w-8 h-[3px] rounded transition-all duration-300 ${menuOpen ? "bg-white -rotate-45 -translate-y-[10px]" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
             </button>
           </div>
         </div>
