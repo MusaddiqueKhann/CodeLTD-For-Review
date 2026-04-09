@@ -91,7 +91,7 @@ export default function Header({ currentPage, navigate }) {
           <button onClick={() => go("home")} className="mt-2 relative z-10">
             {/* Desktop SVG Logo */}
             <img
-              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views)" : "/company-logo/CodeLTD(Mobile-Views).png"}
+              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views).png" : "/company-logo/CodeLTD(Mobile-Views).png"}
               alt="CODE LTD"
               className={`hidden lg:block h-[40px] w-auto object-contain transition-all duration-300 will-change-transform transform-gpu ${
                 scrolled ? "" : "brightness-0 invert"
@@ -100,7 +100,7 @@ export default function Header({ currentPage, navigate }) {
             
             {/* Mobile PNG Logo */}
             <img
-              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views)" : "/company-logo/CodeLTD(Mobile-Views).png"}
+              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views).png" : "/company-logo/CodeLTD(Mobile-Views).png"}
               alt="CODE LTD"
               className={`lg:hidden h-[40px] w-auto max-w-[180px] object-contain transition-all duration-300 ${
                 scrolled ? "" : "brightness-0 invert"
