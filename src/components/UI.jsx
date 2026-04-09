@@ -158,7 +158,7 @@ export function LogoMark({ variant = "white" }) {
     <img
       src={logoSrc}
       alt="CODE LTD"
-      className="h-[38px] w-auto object-contain"
+      className="h-[40px] w-auto object-contain"
       style={variant === "white" ? { filter: "brightness(0) invert(1)" } : undefined}
     />
   );
