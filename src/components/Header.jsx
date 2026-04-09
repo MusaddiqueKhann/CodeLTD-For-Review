@@ -33,20 +33,15 @@ export default function Header({ currentPage, navigate }) {
   const { isAr, toggleLang }      = useLang();
   const NAV_ITEMS = isAr ? NAV_AR : NAV_EN;
 
-  // ─── Scroll Logic ────────────────────────────────────────────────────────────
   useEffect(() => {
     const onScroll = () => {
-      let threshold = 60; 
-
-      // Select elements based on page type
+      let threshold = 60;
       const homeStats = document.getElementById("home-stats-bar");
       const generalHero = document.getElementById("hero-section");
 
       if (currentPage === "home" && homeStats) {
-        // Transition after the stats bar on Home
         threshold = homeStats.offsetTop + homeStats.offsetHeight - 72;
       } else if (generalHero) {
-        // Transition exactly when the Hero section ends on all other pages
         threshold = generalHero.offsetTop + generalHero.offsetHeight - 72;
       }
 
@@ -54,12 +49,10 @@ export default function Header({ currentPage, navigate }) {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // Run immediately on mount or page change
-
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, [currentPage]);
 
-  // ─── Menu & UI Handlers ──────────────────────────────────────────────────────
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -91,15 +84,15 @@ export default function Header({ currentPage, navigate }) {
         className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-500 ${
           scrolled
             ? "bg-white/97 shadow-[0_2px_8px_rgba(0,0,0,0.06)] backdrop-blur-md"
-            : "bg-gradient-to-b from-black/60 to-transparent backdrop-blur-[2px]"
+            : "bg-gradient-to-b from-black/60 to-transparent sm:backdrop-blur-[2px]"
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-          <button onClick={() => go("home")} className="mt-2">
+          <button onClick={() => go("home")} className="mt-2 relative z-10">
             <img
               src={isAr ? "/company-logo/CodeLTD-AR.svg" : "/company-logo/CodeLTD-ENG.svg"}
               alt="CODE LTD"
-              className={`h-[40px] w-auto object-contain transition-all duration-300 ${
+              className={`h-[40px] w-auto object-contain transition-all duration-300 will-change-transform transform-gpu ${
                 scrolled ? "" : "brightness-0 invert"
               }`}
             />
@@ -120,8 +113,8 @@ export default function Header({ currentPage, navigate }) {
           <div className="flex items-center gap-3">
             <button onClick={toggleLang}
               className={`hidden lg:inline-flex items-center gap-1.5 text-[0.78rem] font-bold px-3 py-1.5 rounded-lg border transition-all duration-300 ${
-                scrolled 
-                ? "border-gray-200 text-[#3a3a36] hover:border-[#F15A29] hover:text-[#F15A29]" 
+                scrolled
+                ? "border-gray-200 text-[#3a3a36] hover:border-[#F15A29] hover:text-[#F15A29]"
                 : "border-white/40 text-white hover:border-white hover:bg-white/10"
               }`}
               aria-label="Toggle language">
@@ -136,14 +129,19 @@ export default function Header({ currentPage, navigate }) {
 
             <div className="hidden lg:flex items-center gap-1.5">
               <div className={`w-px h-[36px] flex-shrink-0 transition-colors duration-300 ${scrolled ? "bg-gray-200" : "bg-white/30"}`} />
-              <img 
-                src={isAr ? "/saudi-tech/Saudi-Tech-ARR.png" : "/saudi-tech/Saudi-Tech-ENN.png"} 
-                alt="Saudi Tech" 
-                className={`h-[38px] w-auto object-contain transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`} 
+              <img
+                src={isAr ? "/saudi-tech/Saudi-Tech-ARR.png" : "/saudi-tech/Saudi-Tech-ENN.png"}
+                alt="Saudi Tech"
+                className={`h-[38px] w-auto object-contain transition-all duration-300 ${scrolled ? "" : "brightness-0 invert"}`}
               />
             </div>
 
-            <button className="lg:hidden flex flex-col gap-[5px] p-1.5 z-[60] relative" aria-label="Toggle menu" aria-expanded={menuOpen} onClick={() => setMenuOpen((v) => !v)}>
+            <button
+              className="lg:hidden flex flex-col gap-[5px] p-1.5 z-[60] relative"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+            >
               <span className={`block w-6 h-0.5 rounded transition-all duration-300 ${menuOpen ? "bg-white rotate-45 translate-y-[7px]" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
               <span className={`block w-6 h-0.5 rounded transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0 bg-white" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
               <span className={`block w-6 h-0.5 rounded transition-all duration-300 ${menuOpen ? "bg-white -rotate-45 -translate-y-[7px]" : scrolled ? "bg-[#1a1a17]" : "bg-white"}`} />
@@ -184,13 +182,15 @@ export default function Header({ currentPage, navigate }) {
             {isAr ? "English" : "العربية"}
           </button>
 
-          <div className={`mt-8 flex flex-col items-center gap-2 pb-8 transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-            style={{ transitionDelay: menuOpen ? "0.56s" : "0s" }}>
+          <div
+            className={`mt-8 flex flex-col items-center gap-2 pb-8 transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            style={{ transitionDelay: menuOpen ? "0.56s" : "0s" }}
+          >
             <div className="w-[120px] h-[1px] bg-white/20 mb-2" />
-            <img 
-              src={isAr ? "/saudi-tech/Saudi-Tech-ARR.png" : "/saudi-tech/Saudi-Tech-ENN.png"} 
-              alt="Saudi Tech" 
-              className="h-[50px] w-auto object-contain brightness-0 invert opacity-80" 
+            <img
+              src={isAr ? "/saudi-tech/Saudi-Tech-ARR.png" : "/saudi-tech/Saudi-Tech-ENN.png"}
+              alt="Saudi Tech"
+              className="h-[50px] w-auto object-contain brightness-0 invert opacity-80"
             />
           </div>
         </div>
