@@ -91,16 +91,16 @@ export default function Header({ currentPage, navigate }) {
           <button onClick={() => go("home")} className="mt-2 relative z-10">
             {/* Desktop SVG Logo */}
             <img
-              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views)" : "/company-logo/CodeLTD(Mobile-Views).png"}
+              src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views).png" : "/company-logo/CodeLTD(Mobile-Views).png"}
               alt="CODE LTD"
               className={`hidden lg:block h-[40px] w-auto object-contain transition-all duration-300 will-change-transform transform-gpu ${
                 scrolled ? "" : "brightness-0 invert"
               }`}
             />
             
-            {/* Mobile PNG Logo - Shows only on mobile in original orange color */}
+            {/* Mobile PNG Logo - Now toggles between AR and EN */}
           <img
-            src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views)" : "/company-logo/CodeLTD(Mobile-Views).png"}
+            src={isAr ? "/company-logo/CodeLTD-AR(Mobile-Views).png" : "/company-logo/CodeLTD(Mobile-Views).png"}
             alt="CODE LTD"
             className={`lg:hidden h-[40px] w-auto max-w-[180px] object-contain transition-all duration-300 ${
               scrolled ? "" : "brightness-0 invert"
@@ -120,9 +120,9 @@ export default function Header({ currentPage, navigate }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 lg:gap-3">
             <button onClick={toggleLang}
-              className={`hidden lg:inline-flex items-center gap-1.5 text-[0.78rem] font-bold px-3 py-1.5 rounded-lg border transition-all duration-300 ${
+              className={`inline-flex items-center gap-1.5 text-[0.75rem] lg:text-[0.78rem] font-bold px-2.5 py-1 lg:px-3 lg:py-1.5 rounded-lg border transition-all duration-300 ${
                 scrolled
                 ? "border-gray-200 text-[#3a3a36] hover:border-[#F15A29] hover:text-[#F15A29]"
                 : "border-white/40 text-white hover:border-white hover:bg-white/10"
@@ -147,7 +147,7 @@ export default function Header({ currentPage, navigate }) {
             </div>
 
             <button
-              className="lg:hidden flex flex-col gap-[5px] p-1.5 z-[60] relative"
+              className="lg:hidden flex flex-col gap-[5px] p-1.5 z-[60] relative ml-1"
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
