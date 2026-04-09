@@ -81,10 +81,10 @@ export default function Header({ currentPage, navigate }) {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 h-[72px] z-50 transition-all duration-500 backdrop-blur-lg ${
           scrolled
-            ? "bg-white/97 shadow-[0_2px_8px_rgba(0,0,0,0.06)] backdrop-blur-md"
-            : "bg-gradient-to-b from-black/60 to-transparent sm:backdrop-blur-[2px]"
+            ? "bg-white/97 shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
+            : "bg-gradient-to-b from-black/60 to-transparent"
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
@@ -102,7 +102,7 @@ export default function Header({ currentPage, navigate }) {
             {NAV_ITEMS.map(({ label, page }) => (
               <button key={page} onClick={() => go(page)}
                 className={`text-[0.88rem] font-semibold relative group transition-colors duration-300 ${
-                  scrolled ? "text-[#3a3a36]" : "text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"
+                  scrolled ? "text-[#3a3a36]" : "text-white"
                 } hover:text-[#F15A29]`}>
                 {label}
                 <span className={`absolute -bottom-1 ${isAr ? "right-0" : "left-0"} h-0.5 bg-[#F15A29] rounded transition-transform duration-300 w-full ${currentPage === page ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
