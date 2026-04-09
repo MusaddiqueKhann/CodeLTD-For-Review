@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+    line-height: 1.65;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* Keyframe for pulse-dot in hero badge */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+/* ── RTL Support ────────────────────────────────────── */
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+/* Fix gradient direction in RTL */
+[dir="rtl"] .bg-gradient-to-r {
+  background: linear-gradient(to left, var(--tw-gradient-stops));
+}
+/* Ensure proper spacing in RTL */
+[dir="rtl"] .ml-auto { margin-left: unset; margin-right: auto; }
+[dir="rtl"] .mr-auto { margin-right: unset; margin-left: auto; }
