@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useLang } from "../context/LanguageContext";
 
 const NAV_EN = [
@@ -30,24 +30,8 @@ const GlobeIcon = () => (
 export default function Header({ currentPage, navigate }) {
   const [scrolled, setScrolled]   = useState(false);
   const [menuOpen, setMenuOpen]   = useState(false);
-  // ↓ Controls whether the overlay is mounted at all — avoids blur bleed when closed
-  const [menuMounted, setMenuMounted] = useState(false);
-  const mountTimerRef = useRef(null);
   const { isAr, toggleLang }      = useLang();
   const NAV_ITEMS = isAr ? NAV_AR : NAV_EN;
-
-  // ── Mount/unmount overlay with a delay so the close animation can finish ──
-  useEffect(() => {
-    clearTimeout(mountTimerRef.current);
-    if (menuOpen) {
-      // Mount immediately when opening
-      setMenuMounted(true);
-    } else {
-      // Unmount after the 400ms close transition finishes
-      mountTimerRef.current = setTimeout(() => setMenuMounted(false), 420);
-    }
-    return () => clearTimeout(mountTimerRef.current);
-  }, [menuOpen]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -102,9 +86,6 @@ export default function Header({ currentPage, navigate }) {
             ? "bg-white/97 shadow-[0_2px_8px_rgba(0,0,0,0.06)] backdrop-blur-md"
             : "bg-gradient-to-b from-black/60 to-transparent sm:backdrop-blur-[2px]"
         }`}
-        // ↓ isolate creates a new stacking context so the overlay blur
-        //   cannot leak into the header's compositing layer
-        style={{ isolation: "isolate" }}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           <button onClick={() => go("home")} className="mt-2 relative z-10">
@@ -169,53 +150,51 @@ export default function Header({ currentPage, navigate }) {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay — only mounted when needed to prevent blur bleed */}
-      {menuMounted && (
-        <nav
-          inert={!menuOpen ? "" : undefined}
-          className={`fixed inset-0 h-[100dvh] z-40 flex flex-col bg-[rgba(10,10,8,0.92)] backdrop-blur-[28px] transition-all duration-400 ${
-            menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
-          style={{ overflowY: menuOpen ? "auto" : "hidden", WebkitOverflowScrolling: "touch" }}
-        >
-          <div className={`sticky top-0 left-1/2 w-[60px] h-[3px] bg-[#F15A29] rounded-b self-center transition-opacity duration-300 z-10 ${menuOpen ? "opacity-100 delay-300" : "opacity-0"}`} />
+      {/* Mobile Menu Overlay */}
+      <nav
+        inert={!menuOpen ? "" : undefined}
+        className={`fixed inset-0 h-[100dvh] z-40 flex flex-col bg-[rgba(10,10,8,0.92)] backdrop-blur-[28px] transition-all duration-400 ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        style={{ overflowY: menuOpen ? "auto" : "hidden", WebkitOverflowScrolling: "touch" }}
+      >
+        <div className={`sticky top-0 left-1/2 w-[60px] h-[3px] bg-[#F15A29] rounded-b self-center transition-opacity duration-300 z-10 ${menuOpen ? "opacity-100 delay-300" : "opacity-0"}`} />
 
-          <div className="flex flex-col items-center w-full px-6 pt-[80px] pb-10">
-            {NAV_ITEMS.map(({ label, page }, i) => (
-              <button key={page} onClick={() => go(page)}
-                className={`text-white/80 hover:text-[#F15A29] py-3.5 text-[1.55rem] font-bold w-full max-w-[320px] text-center border-t border-white/[0.07] first:border-t-0 transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-                style={{ transitionDelay: menuOpen ? `${0.08 + i * 0.06}s` : "0s" }}>
-                {label}
-              </button>
-            ))}
-
-            <button onClick={() => go("contact")}
-              className={`mt-9 bg-[#F15A29] text-white font-semibold px-[52px] py-3.5 rounded-xl shadow-[0_4px_16px_rgba(241,90,41,0.28)] transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: menuOpen ? "0.46s" : "0s" }}>
-              {isAr ? "طلب عرض توضيحي" : "Request a Demo"}
+        <div className="flex flex-col items-center w-full px-6 pt-[80px] pb-10">
+          {NAV_ITEMS.map(({ label, page }, i) => (
+            <button key={page} onClick={() => go(page)}
+              className={`text-white/80 hover:text-[#F15A29] py-3.5 text-[1.55rem] font-bold w-full max-w-[320px] text-center border-t border-white/[0.07] first:border-t-0 transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={{ transitionDelay: menuOpen ? `${0.08 + i * 0.06}s` : "0s" }}>
+              {label}
             </button>
+          ))}
 
-            <button onClick={toggleLang}
-              className={`mt-5 flex items-center gap-2 text-white/70 hover:text-[#F15A29] font-bold text-[1rem] transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: menuOpen ? "0.50s" : "0s" }}>
-              <GlobeIcon />
-              {isAr ? "English" : "العربية"}
-            </button>
+          <button onClick={() => go("contact")}
+            className={`mt-9 bg-[#F15A29] text-white font-semibold px-[52px] py-3.5 rounded-xl shadow-[0_4px_16px_rgba(241,90,41,0.28)] transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            style={{ transitionDelay: menuOpen ? "0.46s" : "0s" }}>
+            {isAr ? "طلب عرض توضيحي" : "Request a Demo"}
+          </button>
 
-            <div
-              className={`mt-8 flex flex-col items-center gap-2 pb-8 transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-              style={{ transitionDelay: menuOpen ? "0.56s" : "0s" }}
-            >
-              <div className="w-[120px] h-[1px] bg-white/20 mb-2" />
-              <img
-                src={isAr ? "/saudi-tech/Saudi-Tech-ARR.png" : "/saudi-tech/Saudi-Tech-ENN.png"}
-                alt="Saudi Tech"
-                className="h-[50px] w-auto object-contain brightness-0 invert opacity-80"
-              />
-            </div>
+          <button onClick={toggleLang}
+            className={`mt-5 flex items-center gap-2 text-white/70 hover:text-[#F15A29] font-bold text-[1rem] transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            style={{ transitionDelay: menuOpen ? "0.50s" : "0s" }}>
+            <GlobeIcon />
+            {isAr ? "English" : "العربية"}
+          </button>
+
+          <div
+            className={`mt-8 flex flex-col items-center gap-2 pb-8 transition-all duration-350 ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+            style={{ transitionDelay: menuOpen ? "0.56s" : "0s" }}
+          >
+            <div className="w-[120px] h-[1px] bg-white/20 mb-2" />
+            <img
+              src={isAr ? "/saudi-tech/Saudi-Tech-ARR.png" : "/saudi-tech/Saudi-Tech-ENN.png"}
+              alt="Saudi Tech"
+              className="h-[50px] w-auto object-contain brightness-0 invert opacity-80"
+            />
           </div>
-        </nav>
-      )}
+        </div>
+      </nav>
     </>
   );
 }
