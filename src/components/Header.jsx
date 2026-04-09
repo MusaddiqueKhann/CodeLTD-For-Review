@@ -99,13 +99,13 @@ export default function Header({ currentPage, navigate }) {
             />
             
             {/* Mobile PNG Logo - Shows only on mobile in original orange color */}
-            <img
-              src="/company-logo/CodeLTD(Mobile-View).png"
-              alt="CODE LTD"
-              className={`lg:hidden h-[40px] w-auto object-contain transition-all duration-300 ${
-                scrolled ? "" : "brightness-0 invert"
-              }`}
-            />
+          <img
+            src="/company-logo/CodeLTD(Mobile-View).png"
+            alt="CODE LTD"
+            className={`lg:hidden h-[42px] w-auto max-w-[180px] object-contain transition-all duration-300 ${
+              scrolled ? "" : "brightness-0 invert"
+            }`}
+          />
           </button>
 
           <nav className="hidden lg:flex items-center gap-9">
