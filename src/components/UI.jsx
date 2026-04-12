@@ -50,7 +50,7 @@ const FOOTER_DATA = {
     liveProducts: [
       { label: "Codeit", url: "" },
       { label: "EZ Integrated", url: "" },
-      { label: "TickitPRO", url: "" },
+      { label: "TicketPro", url: "" },
       { label: "Savoxx", url: "" },
     ],
     soonProducts: ["LINKIT", "Namora", "CODEIT Fuel", "Theheen"],
