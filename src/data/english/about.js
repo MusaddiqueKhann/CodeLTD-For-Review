@@ -14,7 +14,7 @@ export const VMG = [
   {
     label: "Goal",
     headline: "Prioritizing Your Growth Over Barriers",
-    body: "We aim to transform technology into your greatest enabler, removing technical friction so you can stop managing complications and start focusing on what matters most: your customers and your expansion.",
+    body: "We aim to transform technology into your greatest enabler, removing technical friction so you can stop managing complications and start focusing on what matters most : your customers and your expansion.",
     icon: "goal",
   },
 ];
