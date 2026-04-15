@@ -32,14 +32,13 @@ const ICONS = { vision: VisionIcon, mission: MissionIcon, goal: GoalIcon };
 function SectionHeader({ isAr }) {
   return (
     <div className="text-center mb-14">
-      <Tag>{isAr ? "رؤيتنا" : "Our Purpose"}</Tag>
       <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[#1a1a17] leading-tight mt-3 mb-3">
         {isAr ? "الرؤية والمهمة والهدف" : "Vision, Mission & Goal"}
       </h2>
       <p className="text-[#a0a09a] font-light text-[0.97rem] max-w-[420px] mx-auto leading-[1.75]">
         {isAr
           ? "ثلاث ركائز تحدد من نحن، وكيف نعمل، وإلى أين نتجه."
-          : "Three pillars that define who we are, how we operate, and where we are headed."}
+          : "Founded in Purpose. Perfected in Process. Scaling in Future"}
       </p>
     </div>
   );
@@ -73,7 +72,7 @@ function PurposeCard({ label, headline, body, icon, isAr }) {
       <div className="text-[1rem] font-bold text-[#1a1a17] mb-3 leading-snug">
         {headline}
       </div>
-      <div className="text-[0.88rem] text-[#a0a09a] font-light leading-[1.75]">
+      <div className="text-[0.88rem] text-[#a0a09a] font-light leading-[1.75] text-justify">
         {body}
       </div>
     </div>
