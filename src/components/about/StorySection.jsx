@@ -30,7 +30,7 @@ function SectionHeader({ tag, heading1, heading2 }) {
 function StatRow({ label, value }) {
   return (
     <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#f3f0eb] last:border-b-0">
-      <span className="text-[0.81rem] text-[#aaa]">{label}</span>
+      <span className="text-[0.81rem] text-[#000000]">{label}</span>
       <span className="text-[0.88rem] font-bold text-[#F15A29]">{value}</span>
     </div>
   );
@@ -38,7 +38,7 @@ function StatRow({ label, value }) {
 
 function StatsTable({ stats }) {
   return (
-    <div className="rounded-2xl border border-[#ece9e4] overflow-hidden bg-white">
+    <div className="rounded-2xl border border-[#ece9e4] overflow-hidden bg-white ">
       {stats.map(([label, value]) => (
         <StatRow key={label} label={label} value={value} />
       ))}
@@ -53,8 +53,8 @@ function PullQuoteColumn({ pullQuote, stats, isAr }) {
         className={`absolute top-1 ${isAr ? "right-0" : "left-0"} bottom-1 w-[2px] rounded-full bg-gradient-to-b from-[#F15A29] to-[#F15A29]/10`}
       />
       <p
-        className="text-[clamp(1.05rem,1.6vw,1.22rem)] text-[#2a2a24] leading-[1.7] mb-9"
-        style={{ fontFamily: "Georgia, serif" }}
+        className="text-[clamp(1.2rem,2vw,1.3rem)] text-[#2a2a24] leading-[1.7] mb-5 font-light text-justify relative z-10 "
+        style={{ fontFamily: "Cario, serif" }}
       >
         {pullQuote}
       </p>
@@ -73,16 +73,26 @@ function Divider() {
   );
 }
 
-function ParagraphsColumn({ para1, para2 }) {
+function ParagraphsColumn({ para1, para2, para1Heading, para2Heading }) {
   return (
     <div className="lg:col-span-7 flex flex-col gap-5 pt-1">
-      <p className="text-[0.96rem] text-[#55554e] font-light leading-[1.88]">
-        {para1}
-      </p>
+      <div>
+        <h3 className="text-[0.96rem] text-[#1a1a17] font-bold leading-[1.88] mb-2">
+          {para1Heading}
+        </h3>
+        <p className="text-[0.96rem] text-[#55554e] font-light leading-[1.88] text-justify">
+          {para1}
+        </p>
+      </div>
       <Divider />
-      <p className="text-[0.96rem] text-[#55554e] font-light leading-[1.88]">
-        {para2}
-      </p>
+      <div>
+        <h3 className="text-[0.96rem] text-[#1a1a17] font-bold leading-[1.88] mb-2">
+          {para2Heading}
+        </h3>
+        <p className="text-[0.96rem] text-[#55554e] font-light leading-[1.88] text-justify">
+          {para2}
+        </p>
+      </div>
     </div>
   );
 }
@@ -116,6 +126,8 @@ export default function StorySection() {
           <ParagraphsColumn
             para1={STORY.para1}
             para2={STORY.para2}
+            para1Heading={STORY.para1Heading}
+            para2Heading={STORY.para2Heading}
           />
         </div>
       </div>
