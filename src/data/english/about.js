@@ -1,20 +1,20 @@
 export const VMG = [
   {
     label: "Vision",
-    headline: "The Operating System for Saudi Business",
-    body: "To be the definitive technology backbone that empowers every Saudi enterprise — from emerging SMEs to multinational conglomerates — to operate with precision, compliance, and confidence.",
+    headline: "Your Bridge to Global Excellence",
+    body: "We envision a future where Saudi-built innovation serves as the ultimate link between local regulatory precision and international technical standards, ensuring your business is equipped to lead on the world stage.",
     icon: "vision",
   },
   {
     label: "Mission",
-    headline: "Compliance Without Compromise",
-    body: "To deliver intelligent, scalable, and locally compliant enterprise solutions that eliminate administrative burden, reduce risk, and accelerate growth — so our clients can focus on building their businesses.",
+    headline: "Simplifying Your Industrial Complexity",
+    body: "Our mission is to provide you with mission-critical infrastructure that turns complex operational hurdles into seamless digital workflows, allowing you to operate with total compliance and unmatched technical reliability.",
     icon: "mission",
   },
   {
     label: "Goal",
-    headline: "1,000 Enterprises by 2027",
-    body: "To grow our active client base to 1,000 Saudi enterprises while maintaining a 98%+ retention rate — a reflection not just of scale, but of the genuine value we deliver every single day.",
+    headline: "Prioritizing Your Growth Over Barriers",
+    body: "We aim to transform technology into your greatest enabler, removing technical friction so you can stop managing complications and start focusing on what matters most: your customers and your expansion.",
     icon: "goal",
   },
 ];
@@ -27,9 +27,12 @@ export const STORY = {
   stats: [
     ["Founded", "2021"],
     ["Origin", "100% Saudi-Built"],
-    ["Compliance", "Local Regs ✓"],
   ],
-  pullQuote: "A Saudi company specializing in advanced software and digital solutions, focused on building innovative products that enhance business operations and efficiency.",
-  para1: "Founded in 2021 to address gaps in the Saudi market, we deliver integrated, user-friendly, and reliable solutions that comply with local regulations—powered by a passionate team committed to innovation and global standards.",
-  para2: "Our work is driven by a passionate team that believes in innovation, quality, and global standards — without compromising on local market requirements. We don't just build tools; we build long-term partnerships with our clients.",
+  pullQuote: "Founded in 2021, we are a 100% Saudi-built innovator bridging the gap between local regulatory precision and world-class technical standards. We engineer high-performance digital ecosystems designed for global scalability, ensuring that Saudi-led technology sets the benchmark for excellence on the international stage.",
+  
+  para1Heading: "Our Ecosystem",
+  para1: "Our strategic evolution has forged a multi-sector powerhouse providing mission-critical infrastructure. From the cloud-native POS capabilities of CodeIT and the ZATCA-compliant integration of EZ Integrated to the AI-driven automation of Theheen, we build tools that solve complex industrial challenges. Whether managing a single fuel station or an enterprise retail network, our suite ensures total reliability.",
+  
+  para2Heading: "Our Philosophy",
+  para2: "We believe technology should be an enabler, not a barrier. By diversifying into specialized platforms like Savoxx for AI-communication and TicketPro for seamless support, we empower businesses to prioritize their customers over their complexities. We don't just deliver software; we cultivate long-term partnerships by adapting our innovative suite to meet the unique demands of global enterprises.",
 };
