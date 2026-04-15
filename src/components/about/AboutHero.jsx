@@ -10,13 +10,13 @@ export default function AboutHero() {
 
   // Content constants
   const content = {
-    tag: isAr ? "عن كود المحدودة" : "About CODE LTD",
+    // tag: isAr ? "عن كود المحدودة" : "About CODE LTD",
     title: isAr
       ? "بناء العمود الفقري للتجارة الرقمية السعودية"
-      : "Building the Backbone of Saudi Digital Commerce",
+      : "Engineering the Standard for Digital Excellence",
     description: isAr
       ? "تأسسنا في المملكة العربية السعودية، نمكّن الشركات بحلول مؤسسية ذكية ومتوافقة وقابلة للتوسع."
-      : "Founded in the Kingdom of Saudi Arabia, we empower businesses with intelligent, compliant, and scalable enterprise solutions.",
+      : "Translating complex regulatory frameworks into high-performance industrial software.",
   };
 
   // Preloading the image helps the browser cache it faster 
@@ -31,22 +31,20 @@ export default function AboutHero() {
   };
 
   return (
-    <section
+      <section
       id="hero-section"
       className="relative flex min-h-[360px] items-center justify-center pt-[80px] pb-12 sm:min-h-[400px] lg:h-[420px]"
       style={backgroundStyle}
     >
       <div className="mx-auto w-full max-w-[1200px] px-4 pt-[40px] text-center sm:px-6 lg:px-8">
-        {/* Tag Component */}
-        <Tag>{content.tag}</Tag>
 
         {/* Main Heading */}
-        <h1 className="mt-4 mb-4 text-[clamp(2.2rem,5vw,3.8rem)] font-bold leading-tight text-white">
+        <h1 className="mt-0 mb-4 text-[clamp(2.2rem,5vw,3.8rem)] font-bold leading-tight text-white">
           {content.title}
         </h1>
 
         {/* Description Paragraph */}
-        <p className="mx-auto max-w-[520px] text-[1.05rem] font-light leading-[1.75] text-white/65">
+        <p className="mx-auto max-w-[520px] text-[1.05rem] font-light leading-[1.75] text-white/80">
           {content.description}
         </p>
       </div>
